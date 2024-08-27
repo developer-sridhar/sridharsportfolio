@@ -78,7 +78,7 @@ const AdminProjects = () => {
     <div className="p-5">
       <div className="flex justify-end mb-5">
         <button
-          className="bg-primary px-5 py-2 text-white rounded"
+          className="bg-primary px-5 py-2 text-white rounded-md"
           onClick={() => {
             setSelectedItemForEdit(null);
             setShowAddEditModal(true);
@@ -87,24 +87,33 @@ const AdminProjects = () => {
           Add Project
         </button>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {projects.map((project) => (
           <div
             key={project._id}
-            className="shadow border p-5 border-gray-400 flex flex-col justify-between"
+            className="shadow border p-5 border-gray-400 flex flex-col justify-between rounded-md relative"
           >
-            <div>
-              <h1 className="text-xl text-primary font-bold">
+            <div className="mb-14 overflow-hidden">
+              <h1 className="text-lg text-white font-bold mb-2 bg-secondary rounded-md text-center pt-1 pb-1">
                 {project.title}
               </h1>
-              <img src={project.image} alt="" className="h-62 w-full"/>
-              <h1>Technologies: {project.technologies}</h1>
-              <h1>Description: {project.description}</h1>
-              <h1>Link: {project.link}</h1>
+              <img
+                src={project.image}
+                alt=""
+                className="h-48 w-full object-cover mb-3 rounded"
+              />
+              <h1 className="font-bold">Technologies:</h1>
+              <p>{project.technologies}</p>
+              <h1 className="font-bold">Description:</h1>
+              <p className="flex-1 overflow-auto">{project.description}</p> {/* Added overflow-auto for responsive content */}
+              <h1 className="font-bold">Link:</h1>
+              <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-primary underline">
+                {project.link}
+              </a>
             </div>
-            <div className="flex justify-end gap-5 mt-5">
+            <div className="absolute bottom-5 right-5 flex gap-5">
               <button
-                className="bg-primary text-white px-5 py-2 rounded-md"
+                className="bg-primary text-white px-5 py-2 rounded-md "
                 onClick={() => openModal(project)}
               >
                 Edit
@@ -120,26 +129,26 @@ const AdminProjects = () => {
         ))}
       </div>
       <Modal
-        visible={showAddEditModal}
-        title={selectedItemForEdit ? "Edit project" : "Add project"}
+        open={showAddEditModal}
+        title={selectedItemForEdit ? "Edit Project" : "Add Project"}
         footer={null}
         onCancel={() => setShowAddEditModal(false)}
       >
         <Form form={form} layout="vertical" onFinish={onFinish}>
           <Form.Item name="title" label="Title">
-            <input placeholder="Title" className="w-full p-2 border rounded"/>
+            <input placeholder="Title" className="w-full p-2 border rounded-md"/>
           </Form.Item>
           <Form.Item name="description" label="Description">
-            <input placeholder="Description" className="w-full p-2 border rounded"/>
+            <textarea placeholder="Description" className="w-full p-2 border rounded-md"/>
           </Form.Item>
           <Form.Item name="image" label="Image URL">
-            <input placeholder="Image URL" className="w-full p-2 border rounded"/>
+            <input placeholder="Image URL" className="w-full p-2 border rounded-md"/>
           </Form.Item>
           <Form.Item name="link" label="Link">
-            <input placeholder="Paste URL Link" className="w-full p-2 border rounded"/>
+            <input placeholder="Paste URL Link" className="w-full p-2 border rounded-md"/>
           </Form.Item>
           <Form.Item name="technologies" label="Technologies">
-            <input placeholder="Technologies" className="w-full p-2 border rounded"/>
+            <input placeholder="Technologies" className="w-full p-2 border rounded-md"/>
           </Form.Item>
           <div className="flex justify-end gap-3">
             <button

@@ -10,16 +10,14 @@ const Project = () => {
 
   return (
     <div>
-      <SectionTitle title="Projects" />
+      <SectionTitle title="Projects"/>
 
-      <div className="flex py-10 gap-20 flex-col md:flex-row">
-        <div className="flex flex-col gap-10 border-l-2 border-[#135e4c82] w-full md:w-1/3 md:overflow-y-auto">
-          {project && project.map((project, index) => (
+      <div className="flex py-10 gap-20 sm:flex-col">
+        <div className="flex flex-col gap-10 border-l-2 border-[#135e4c82] w-1/3 sm:flex-row sm:overflow-x-scroll sm:w-full">
+          {project.map((projectItem, index) => (
             <div
               key={index}
-              onClick={() => {
-                setSelectedItemIndex(index);
-              }}
+              onClick={() => setSelectedItemIndex(index)}
               className="cursor-pointer"
             >
               <h1
@@ -29,21 +27,19 @@ const Project = () => {
                     : "text-white"
                 }`}
               >
-                {project.title}
+                {projectItem.title}
               </h1>
             </div>
           ))}
         </div>
 
-        {project && (
-          <div className="flex items-center justify-center gap-10 flex-col md:flex-row">
-          <Link to={project[selectedItemIndex].link}>
+        {project.length > 0 && (
+          <div className="flex items-center justify-center gap-10 sm:flex-col">  
             <img
               src={project[selectedItemIndex].image}
               alt={project[selectedItemIndex].title}
-              className="h-60 w-72"
-            />
-          </Link> 
+              className="h-52 w-80"
+            />        
             <div className="flex flex-col gap-5">
               <h1 className="text-secondary text-2xl font-semibold">
                 {project[selectedItemIndex].title}
@@ -51,6 +47,11 @@ const Project = () => {
               <p className="text-white">
                 {project[selectedItemIndex].description}
               </p>
+              <Link to={project[selectedItemIndex].link}>
+                <button className="border-2 hover:bg-tertiary hover:text-primary hover:font-semibold border-tertiary text-tertiary px-5 py-3 rounded">
+                  View
+                </button>
+              </Link>
             </div>
           </div>
         )}

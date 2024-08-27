@@ -52,7 +52,7 @@ const AdminContact = () => {
         <Form.Item name='address' label='Address'>
           <textarea placeholder='Address'/>
         </Form.Item>
-        <div className='flex justify-end' label='name'>
+        <div className='flex justify-end mb-5' label='name'>
           <button className='px-5 py-2 bg-primary text-white rounded-md' type='submit'>SAVE</button>
         </div>
       </Form>

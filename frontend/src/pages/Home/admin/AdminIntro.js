@@ -7,8 +7,9 @@ import axios from 'axios'
 
 const AdminIntro = () => {
   const dispatch = useDispatch();
-  const{portfolioData} = useSelector((state) => state.root);
-  const onFinish = async(values) => {
+  const { portfolioData } = useSelector((state) => state.root);
+  
+  const onFinish = async (values) => {
     try {
       dispatch(ShowLoading())
       const response = await axios.post("https://sridharsportfolio.onrender.com/api/portfolio/update-intro", {
@@ -16,9 +17,9 @@ const AdminIntro = () => {
         _id: portfolioData.intro._id,
       });
       dispatch(HideLoading())
-      if(response.data.success){
+      if (response.data.success) {
         message.success(response.data.message)
-      }else{
+      } else {
         message.error(response.data.message)
       }
     } catch (error) {
@@ -26,7 +27,6 @@ const AdminIntro = () => {
       message.error(error.message)
     }
   };
-
 
   return (
     <div>
@@ -41,7 +41,7 @@ const AdminIntro = () => {
           <input placeholder='Last Name'/>
         </Form.Item>
         <Form.Item name='caption' label='Caption'>
-          <input placeholder='Caption'/>
+          <input placeholder='Caption (separate captions with commas)'/>
         </Form.Item>
         <Form.Item name='description' label='Description'>
           <textarea placeholder='Description'/>

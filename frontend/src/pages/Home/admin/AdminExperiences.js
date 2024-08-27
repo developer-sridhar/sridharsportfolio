@@ -10,7 +10,7 @@ const Experiences = () => {
   const experiences = portfolioData?.experience || [];
   const [showAddEditModal, setShowAddEditModal] = React.useState(false);
   const [selectedItemForEdit, setSelectedItemForEdit] = React.useState(null);
-  const [form] = Form.useForm(); // Initialize the form here
+  const [form] = Form.useForm(); 
 
   useEffect(() => {
     if (showAddEditModal) {
@@ -59,7 +59,7 @@ const Experiences = () => {
       dispatch(HideLoading());
       if (response.data.success) {
         message.success(response.data.message);
-        dispatch(ReloadData(true)); // Reload data after deleting
+        dispatch(ReloadData(true)); 
       } else {
         message.error(response.data.message);
       }
@@ -87,19 +87,21 @@ const Experiences = () => {
           Add Experience
         </button>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-5">
         {experiences.map((experience) => (
           <div
             key={experience._id}
-            className="shadow border p-5 border-gray-400 flex flex-col rounded-md"
+            className="shadow border p-5 border-gray-400 flex flex-col rounded-md relative h-full"
           >
-            <h1 className="text-xl text-primary font-bold">
+            <h1 className="text-lg text-white font-bold mb-2 bg-secondary pt-1 pb-1 text-center rounded">
               {experience.period}
             </h1>
-            <h1>Company: {experience.company}</h1>
-            <h1>Role: {experience.title}</h1>
-            <h1>Description: {experience.description}</h1>
-            <div className="flex justify-end gap-5 mt-5">
+            <hr className="text-primary "/>
+            <h1 className="font-bold">Company: <span className="font-medium">{experience.company}</span></h1>
+            <h1 className="font-bold">Role: <span className="font-medium">{experience.title}</span></h1>
+            <h1 className="font-bold">Description:</h1>
+            <p className="flex-1 overflow-auto">{experience.description}</p> {/* Use overflow-auto for proper content display */}
+            <div className="absolute bottom-5 right-5 flex gap-5 bg-white pl-1 lg:pl-40 sm:pl-52 rounded-sm  ">
               <button
                 className="bg-primary text-white px-5 py-2 rounded-md"
                 onClick={() => openModal(experience)}

@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRightToBracket } from '@fortawesome/free-solid-svg-icons'; // Import the specific icon
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -17,12 +19,17 @@ const Footer = () => {
           <span className='text-tertiary cursor-pointer hover:text-blue-600'>Sridhar.C</span>
         </h1>
       </div>
-      <div>
-        <h3 className='text-secondary '>Admin Use Only</h3>
-        <button onClick={handleAdminLoginClick} className='text-tertiary bg-primary border-tertiary border px-4 py-2 hover:text-primary hover:font-semibold hover:bg-tertiary'>Admin Login</button>
+      <div className='flex flex-row space-x-2 items-center mt-4 '>
+        <h3 className='text-secondary'>Admin Use Only</h3>
+        <FontAwesomeIcon
+          onClick={handleAdminLoginClick}
+          icon={faRightToBracket}
+          className='text-tertiary cursor-pointer hover:text-green-600 text-2xl mt-2 mb-2'
+        />
+        
       </div>
     </div>
   );
-}
+};
 
 export default Footer;

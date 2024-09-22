@@ -1,7 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRightToBracket } from '@fortawesome/free-solid-svg-icons'; // Import the specific icon
 
 const Footer = () => {
 

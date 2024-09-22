@@ -4,11 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightToBracket } from '@fortawesome/free-solid-svg-icons'; // Import the specific icon
 
 const Footer = () => {
-  const navigate = useNavigate();
-
-  const handleAdminLoginClick = () => {
-    navigate('/admin-login');
-  };
 
   return (
     <div className='py-10'>
@@ -18,15 +13,6 @@ const Footer = () => {
         <h1 className='text-white'>
           <span className='text-tertiary cursor-pointer hover:text-blue-600'>Sridhar.C</span>
         </h1>
-      </div>
-      <div className='flex flex-row space-x-2 items-center mt-4 '>
-        <h3 className='text-secondary'>Admin Use Only</h3>
-        <FontAwesomeIcon
-          onClick={handleAdminLoginClick}
-          icon={faRightToBracket}
-          className='text-tertiary cursor-pointer hover:text-green-600 text-2xl mt-2 mb-2'
-        />
-        
       </div>
     </div>
   );

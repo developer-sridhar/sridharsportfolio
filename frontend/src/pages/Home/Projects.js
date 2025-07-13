@@ -47,8 +47,7 @@ const Project = () => {
               <p className="text-white">
                 {project[selectedItemIndex].description}
               </p>
-               <p>
-                <h1>Technologies</h1>
+               <p className="text-tertiary">
                 {project[selectedItemIndex].technologies}
               </p> 
               <Link to={project[selectedItemIndex].link}>

@@ -47,6 +47,10 @@ const Project = () => {
               <p className="text-white">
                 {project[selectedItemIndex].description}
               </p>
+               <p>
+                <h1>Technologies</h1>
+                {project[selectedItemIndex].technologies}
+              </p> 
               <Link to={project[selectedItemIndex].link}>
                 <button className="border-2 hover:bg-tertiary hover:text-primary hover:font-semibold border-tertiary text-tertiary px-5 py-3 rounded">
                   View

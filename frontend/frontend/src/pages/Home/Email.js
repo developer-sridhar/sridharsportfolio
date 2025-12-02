@@ -44,8 +44,8 @@ const Email = () => {
     setLoading(true);
     emailjs
       .send(
-        "service_o0vlpid",
-        "template_78fajls",
+        "service_edxfce5",
+        "template_pl46h3l",
         formData,
         "UdGjt0GOHOxqhFqWq"
       )
